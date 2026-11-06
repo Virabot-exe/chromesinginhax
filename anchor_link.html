@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchor Link</title>
+</head>
+<body>
+
+    <h2>Anchor Link</h2>
+    
+    <!-- Input box for typing the URL -->
+    <input type="text" id="urlInput" placeholder="Enter URL here..." style="width: 300px; padding: 5px;">
+    <button onclick="convertURL()">Convert</button>
+
+    <h3>Link:</h3>
+    <!-- pre tag handles raw text output without rendering the HTML style layout -->
+    <pre id="output"></pre>
+
+    <script>
+        function convertURL() {
+            // Get the value typed inside the input box
+            const inputVal = document.getElementById('urlInput').value.trim();
+            const outputElement = document.getElementById('output');
+
+            if (inputVal === "") {
+                outputElement.textContent = "Please enter a valid URL.";
+                return;
+            }
+
+            // Construct the exact string representation of the a href tag
+            const htmlString = `<a href="${inputVal}">${inputVal}</a>`;
+
+            // textContent safely escapes HTML tags so they print as raw code text instead of rendering as a clickable link
+            outputElement.innerHTML = htmlString;
+        }
+    </script>
+
+</body>
+</html>
